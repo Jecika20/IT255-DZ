@@ -1,0 +1,29 @@
+<div class="container mt-3">
+  <h2>Room List</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Options</th>
+        <th scope="col">Price of additional options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of rooms">
+        <td>{{ room.id }}</td>
+        <td>{{ room.name }}</td>
+        <td>{{ room.options }}</td>
+        <!-- <td>{{ room.price === 0 ? "" : room.price }}</td> -->
+        <td *ngIf="room.price !== undefined && room.price > 0">
+          {{ room.price }}
+        </td>
+        <td *ngIf="room.price === 0"></td>
+        <td>
+          <button class="btn btn-warning" (click)="onEditRoom(room)">Edit</button>
+          <button class="btn btn-danger" (click)="onDeleteRoom(room.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
